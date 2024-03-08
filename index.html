@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/beige.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/beige.css">
+
+		<style>
+			.book-slide {
+				background-color: #f5f5f5;
+				padding: 20px;
+				border: 2px solid #ccc;
+				border-radius: 5px;
+				width: 60%;
+				margin: auto;
+				display: flex;
+                flex-direction: column;
+				justify-content: center; /* Center vertically */
+                align-items: center; /* Center horizontally */
+			}
+	
+			.book-slide h1 {
+				font-size: 36px;
+				margin-bottom: 20px;
+			}
+	
+			.book-slide p {
+				font-size: 24px;
+				line-height: 1;
+				
+			}
+
+			.book-slide ul {
+				font-size: 24px;
+				line-height: 1;
+				
+			}
+		</style>
+
+		<style>
+			.book-slide2 {
+				background-color: #ffffff;
+				padding: 20px;
+				border: 2px solid #ccc;
+				border-radius: 5px;
+				
+				
+			}
+
+			.book-slide2 h1 {
+				font-size: 36px;
+				margin-bottom: 20px;
+			}
+
+			.book-slide2 p {
+				font-size: 24px;
+				line-height: 1;
+				
+			}
+		</style>
+
+		<style>
+			.book-slide3 {
+				background-color: #000000;
+				padding: 20px;
+				border: 2px solid #ccc;
+				color: #ffffff;
+				border-radius: 5px;
+				
+				
+			}
+
+			.book-slide3 h1 {
+				font-size: 36px;
+				margin-bottom: 20px;
+			}
+
+			.book-slide3 p {
+				font-size: 24px;
+				line-height: 1;
+				
+			}
+		</style>
+
+		<style>
+			.container {
+				display: flex;
+			}
+
+			.box {
+				flex: 1;
+				background-color: hwb(0 100% 0%);
+				padding: 20px;
+				border: 2px solid #ccc;
+				border-radius: 5px;
+				width: 60%;
+				margin-right: 30px;
+			}
+
+			.box:last-child {
+				margin-right: 0;
+			}
+		</style>
+
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>A Tropical Trip Through Smale’s 9th Problem and More</h2>
+					<p>
+						Elizabeth Holland
+					
+					</p>
+				</section>
+				<section>
+					<h2>
+						Tropical algebra
+					</h2>
+
+					<p class="book-slide2">
+					Tropical geometry concerns itself with the tropical semiring \[ \mathbb{T} = (\mathbb{R} \cap \{-\infty\} , \oplus, \otimes)  \]
+					
+					which is equipped with the operations
+
+					\[
+					\begin{aligned}
+					x \oplus y &amp; = \max(x, y) \\
+					x \otimes y &amp; = x + y
+					\end{aligned}
+					\]
+
+					E.g. \[ x \oplus (x \otimes y ) = \max(x, x+y ) \]
+
+					</p>
+					
+				</section>
+				<section>
+					<h2>Tropical Polynomials </h2>
+					<p class="book-slide2">
+						Tropical polynomials are piecewise linear functions with integer slopes and a finite number of linear pieces
+
+						\[ f(x) = x \oplus (x \otimes y ) = \max(x, x+y ) \]
+					</p>
+				</section>
+				<section>
+					<h2> Tropical Varieties </h2>
+					<p class="book-slide2">
+						A point is in the tropical shape if the maximum is achieved twice
+					
+					<img src="tropical curve.png">
+				</p>
+				</section>
+				<section>
+					<h2> Geometry over Non-Archimedean Fields </h2>
+					<p class="book-slide2">
+						Tropical geometry deals with varieties over Non-Archimedean fields
+						
+
+					<img src="Archimedean.png">
+					</p>
+				</section>
+				<section>
+					<h2> Tropicalizing the Puiseux series</h2>
+					<p class="book-slide2">
+						The Puiseux series with coefficients in a field \( K \) is a power series containing fractional exponents of the form \[ f = \sum_{k=k_0}^{\infty} c_kt^{k/n}\] where \( n \in \mathbb{N} \) 
+						<br>
+                        Puiseux series are equipped with the valuation \( v : K \rightarrow \mathbb{R} \). The valuation is given by taking \( v(f) = k_0/n \).
+
+
+					</p>
+				</section>
+				<section>
+					<h2> Smale’s 9th Problem
+					</h2>
+					
+					<p class="book-slide2"> 
+
+						Does <strong>linear programming</strong> admit a <strong>strongly polynomial</strong> algorithm?
+
+					</p>
+
+
+					<div class="container">
+						<div class="box">
+							<p><strong>Linear programming</strong></p>
+						  <img src="LP_example.png">
+						</div>
+						<div class="box">
+							<p><strong>Strongly polynomial</strong></p>
+						  <ul>
+							<li>polynomial time in the bit model</li> 
+							<li>total number of arithmetic operations is bounded by poly(n)</li>
+						  </ul>	
+						</div>
+					  </div>
+
+				</section>
+				<section>
+					<h2>
+						Interior point methods
+					</h2>
+					<div class="book-slide3">
+					<video src="Interior_point_method.mp4" width="400" height="200" controls autoplay loop></video>
+					<p>
+						A class of linear programs which follow the central path within the feasible region to reach optima.
+						They incorporate constraints using barrier functions, such as the 
+						Log-barrier \[B(x) = -\sum_{i=1}^{m} \log(-g_i(x)) - \sum_{j=1}^{p} \log(h_j(x))\] 
+
+						<br>
+
+						Dual-primal methods: 
+						 class of interior point methods that seek 
+						solutions for both the primal and dual problems 
+					</p>
+				    </div>
+				</section>
+				<section>
+					    <section>
+					    <h2> Proving Log-barrier interior point methods are not strongly polynomial</h2>
+					    <img src="proof_paper.png">
+					    </section>
+
+						<section>
+							<h3> Approach </h3>
+							<ul class="book-slide2">
+								   <li> Construct a family of linear programs with 2r variables and 3r + 1 constraints </li>
+								   <li> The total curvature of the central path of these linear programs is exponential in r, disproving the Hirsch conjecture proposed by Deza, Terlaky and Zinchenko. </li>
+
+
+							</ul>
+						</section>
+						<section>
+							<p>
+								We consider the linear program over a real closed non-Archimedean ﬁeld of Puiseux series in the parameter t. Our method is to tropicalize the central path in linear programming. The tropical central path is the piecewise-linear limit of the central paths of parameterized families of classical linear programs viewed through logarithmic glasses. This allows us to provide combinatorial lower bounds for the number of iterations and the total curvature, in a general setting. Then, the tropical central path is deﬁned as the image by the valuation of the central path over this ﬁeld
+
+							</p>
+						</section>
+						<section>
+							<h2> Key Takeaways </h2>
+							<p class="book-slide">
+								Obtained a family of counter-examples showing that standard polynomial-time interior points methods exhibit a non strongly polynomial time behavior
+								We considered non-archimedean instances with a degenerate tropical limit that we characterized by combinatorial means
+		
+								Showed a significantly large family of LP algorithms are NOT strongly polynomial
+								This strategy may be applicable to other interior point methods
+		
+		
+							</p>
+						</section>
+				</section>
+			
+				<section>
+					<h2> Other applications of tropical geometry </h2>
+					<p class="book-slide2">
+						Phylogenetics <img src="phylogenetics.jpeg">
+						<br>
+						
+						Proving the Brill-Noether theorem (tropically)
+						<br>
+						Helping the Bank of England during the 2007-2008 Financial Crisis
+					</p>
+				</section>
+				<section>
+					<h2> Final thoughts </h2>
+						<ul>
+							<li>Introduced tropical geometry</li>
+							<li>Discussed its use in an open linear programming problem</li>
+							<li>Discussed other fascinating applications</li>
+						</ul>
+						
+				</section>
+				<section>
+					<h2> References</h2>
+					<p>
+					</p>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				controls: false,
+				autoAnimate: true,
+
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
