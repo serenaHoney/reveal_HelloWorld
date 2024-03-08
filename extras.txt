@@ -1,0 +1,21 @@
+<! -- 
+				<section>
+					<h2> Geometry over Non-Archimedean Fields </h2>
+					<p class="book-slide2">
+						Tropical geometry deals with varieties over Non-Archimedean fields
+						
+
+					<img src="Archimedean.png">
+					</p>
+				</section>
+				<section>
+					<h2> Tropicalizing the Puiseux series</h2>
+					<p class="book-slide2">
+						The Puiseux series with coefficients in a field \( K \) is a power series containing fractional exponents of the form \[ f = \sum_{k=k_0}^{\infty} c_kt^{k/n}\] where \( n \in \mathbb{N} \) 
+						<br>
+                        Puiseux series are equipped with the valuation \( v : K \rightarrow \mathbb{R} \). The valuation is given by taking \( v(f) = k_0/n \).
+
+
+					</p>
+				</section>
+			-->
