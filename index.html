@@ -161,6 +161,15 @@
 			}
 		</style>
 
+		<style>
+			.centerimage {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 50%;
+			}
+		</style>
+
 
 
 	</head>
@@ -170,7 +179,9 @@
 				<section>
 					<h2>A Tropical Trip Through Smale’s 9th Problem and More</h2>
 					<p>
-						Elizabeth Holland
+						<strong> Holland Elizabeth</strong> 
+						<br><br>
+						<strong>TMT Conference 2024</strong>
 					
 					</p>
 				</section>
@@ -191,11 +202,11 @@
 						\end{aligned}
 						\]
 						<br>
-						Examples: 
+						<strong>Examples of tropical operations:</strong> 
 						<br><br>
 						(additive identity)                   $-\infty\ \oplus x = x$
 						<br>						
-						(multiplicative identity)             $0 \otimes x = x$
+						(multiplicative identity)              $0 \otimes x = x$
 					</p>
 					
 					
@@ -206,13 +217,13 @@
 						Tropical polynomials are piecewise linear functions with a finite number of linear pieces
 
 						<br> <br>
-						<strong>Example: </strong> A tropical polynomial in 2 variables $x,y$ is an expression of the following form, where $S$ is the set of all $(i,j) \in \mathbb{Z}$ which appear as exponents.
+						<strong>Def: </strong> A tropical polynomial in 2 variables $x,y$ is an expression of the following form
 						\[
-						\bigoplus_{(i,j) \in \mathbb{Z}} \left( \bigoplus_{(i',j') \in S} (c_{i',j'} \odot x^{i'} \odot y^{j'}) \right)
+						\bigoplus_{(i,j) \in S} (c_{i,j} \odot x^{i} \odot y^{j}) 
 						\]
-						where $x,y,c \in \mathbb{R}$, $c \neq -\infty$,
-						
-						polynomials and its translation into conventional notation.
+						where $S$ is the set of all exponent pairs $(i,j) \in \mathbb{Z^2}$ and $c_{i,j} \neq -\infty$,
+						<br><br>
+						<strong>Examples of tropical polynomials: </strong>
 						\[
 						\begin{aligned}
 						&0 \oplus x \oplus y \quad \Rightarrow \quad \max \{ x, y, 0 \} \\
@@ -224,20 +235,34 @@
 					</p>
 				</section>
 				<section>
-					<h2> Tropical Shapes </h2>
+					<section>
+					<h2> Tropical Curves in the Plane </h2>
 					<p class="book-slide2">
-						A point is in the tropical shape if the maximum is achieved twice
+						<strong>Def: </strong>
+						A tropical polynomial \( p(x_1,\ldots, x_n) \) vanishes at a point \( (a_1,\ldots,a_n) \) if the maximum in \( p(a_1,\ldots,a_n) \) is achieved at least twice.
+						<br><br>
+						<strong>Example (the Tropical Line): </strong>
+						For \( f(x,y) = 0 \oplus x \oplus y \),  the maximum is achieved at least twice if 
+						\[
+						\begin{aligned}
+						x = y >= 0, x = 0 >= y, y = 0 >= x
+						\end{aligned}
+						\]
 
-						For 
-						$&0 \oplus x \oplus y$
-						 , the maximum is achieved when either x = y, x = 0, y = 0.
-						Drawn on a cartesian plane we obtain the tropical shape
+						If we draw these piecewise functions in the plane, we obtain the polynomial's tropical curve
+						<br>
+						<img src="tropical curve.png" height="50%" width="50%">
+					</section>
+					<section>
+						<h2> Tropical Curves in the Plane </h2>
+						<p class="book-slide2"> <img src="pol-deg.png" height="100%" width="100%"> 
+							<br> More examples of tropical curves of different degrees</p>
+					</section>
 
 
 
-					
-					<img src="tropical_line.png">
-				</p>
+
+					</p>
 				</section>
 
 				
@@ -256,7 +281,7 @@
 						<div class="box-w">
 							<p><strong>Linear programming</strong>
 							<br>
-							Find a vector $\mathbf{x}$ that minimizes $\mathbf{c}^T \mathbf{x}$ subject to the constraints $\mathbf{A}\mathbf{x} \leq \mathbf{b}$ and $\mathbf{x} \geq \mathbf{0}$
+							Find a vector $\mathbf{x}$ that maximizes $\mathbf{c}^T \mathbf{x}$ subject to the constraints $\mathbf{A}\mathbf{x} \leq \mathbf{b}$ and $\mathbf{x} \geq \mathbf{0}$
 						</p>
 						  <img src="LP_example.png">
 						</div>
@@ -264,7 +289,7 @@
 							<p><strong>Strongly polynomial</strong></p>
 						  <ul>
 							<li>polynomial time in the bit model</li> 
-							<li>total number of arithmetic operations polynomial</li>
+							<li>total number of arithmetic operations is polynomial</li>
 						  </ul>	
 						</div>
 					  </div>
@@ -272,7 +297,7 @@
 				</section>
 				<section>
 					<h2>
-						Interior point methods
+						Linear Programming Algorithms
 					</h2>
 				
 
@@ -285,7 +310,7 @@
 							<br><br><br>
 							Finds an optimal solution by traversing the edges between vertices on the feasible region
 							<br><br>
-							Worst-case exponential complexity
+							• Worst-case exponential complexity
 
 							
 						</p>
@@ -312,22 +337,21 @@
 				<section>
 					<h2> Essence of the proof </h2>
 					<div class="book-slide2">
-					<p> Construct a family of linear programs with 3r + 1 constraints in dimension
-						2r
+					<p> • Construct a family of counter examples with 3r + 1 constraints in dimension
+						2r for r > 0
 					
-					<br> Tropicalize the central path
-					<br> Approximate the tropical central path by tropical segments
-
-					<br> A general lower bound on the number of iterations of interior point
-					methods with a log-barrier is given by the smallest number of tropical segments needed to describe the tropical central path
-					<br>
-					Final result: the number of iterations is exponential with order $O(2^r)$
+					<br> • Tropicalize the central path of the example programs
+					<br> • Approximate the tropical central path by tropical segments
+					<br> • Lower bound on number of tropical segments needed \(<=>\) Lower bound on number of iterations of the program
+					
+					<br><br>
+					<strong>Final result:</strong> the number of iterations is exponential with order $O(2^r)$
 
 					</p>
 
 					
 					<div class="image-container">
-						<img src="algebraic.png" alt="Image 1">
+						<img src="algebraic.png" alt="Image 1" height="150%" width="150%">
 						<p> The algebraic central path</p>
 					  </div>
 					  
@@ -345,26 +369,40 @@
 				<section>
 					<h2> Other applications of tropical geometry </h2>
 					<p class="book-slide2">
-						Study the topology of phylogenetic trees using tropical geometry <img src="phylo_tree.png">
+						• Study the topology of phylogenetic trees using tropical geometry <img src="phylo_tree.png">
+						<br>					
 						<br>
 						
-						
-						<br>
-						Tropical geometry was used by economist Paul Klemperer to design auctions used by the Bank of England during the financial crisis in 2007
+						• Tropical geometry was used by economist Paul Klemperer to design auctions used by the Bank of England during the financial crisis in 2007 to allocate money to the UK financial system
+					    
+						<br><br>
+					    • Deep learning interpretability, optimisation of mobile networks, and much more!
 					</p>
 				</section>
 				<section>
 					<h2> Final thoughts </h2>
-						<ul class="book-slide2">
-							<li>Introduced tropical geometry</li>
-							<li>Discussed its use in an open linear programming problem</li>
-							<li>Discussed other fascinating applications</li>
-						</ul>
+						<p class="book-slide2">
+							<br>
+							• Introduced tropical geometry
+							<br><br>
+							• Discussed its use in an open linear programming problem
+							<br><br>
+							• Discussed other fascinating applications</li>
+							<br><br>
+						</p>
 						
 				</section>
 				<section>
 					<h2> References</h2>
-					<p>
+					<p class="book-slide2">
+						<br>
+						• <strong>R. Morrison</strong>, "Tropical geometry," 2019. [<a href="https://arxiv.org/abs/1908.07012">arXiv:1908.07012</a>]
+
+						<br><br>
+						• <strong>X. Allamigeon</strong>, <strong>P. Benchimol</strong>, <strong>S. Gaubert</strong>, and <strong>M. Joswig</strong>, "Log-Barrier Interior Point Methods Are Not Strongly Polynomial," <em>SIAM Journal on Applied Algebra and Geometry</em>, vol. 2, no. 1, pp. 140–178, Jan. 2018. [<a href="http://dx.doi.org/10.1137/17M1142132">DOI: 10.1137/17m1142132</a>]
+						<br><br>
+						• <strong>E. Brugallé</strong>, <strong>I. Itenberg</strong>, <strong>G. Mikhalkin</strong>, and <strong>K. Shaw</strong>, "Brief introduction to tropical geometry," 2015. [<a href="https://arxiv.org/abs/1502.05950">arXiv:1502.05950</a>]
+						<br><br>
 					</p>
 				</section>
 
