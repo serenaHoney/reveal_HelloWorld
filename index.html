@@ -46,11 +46,40 @@
 		</style>
 
 		<style>
+			.description {
+			color: #fff;
+			}
+
+			.description em {
+			color: #ffa500;
+			}
+		</style>
+
+		<style>
+			.image-container {
+			display: inline-block;
+			width: 30%; /* Adjust width as needed */
+			margin: 10px;
+			text-align: center;
+			}
+			
+			.image-container img {
+			max-width: 100%;
+			height: auto;
+			display: block;
+			margin: 0 auto;
+			}
+		</style>
+		
+
+		<style>
 			.book-slide2 {
 				background-color: #ffffff;
 				padding: 20px;
 				border: 2px solid #ccc;
 				border-radius: 5px;
+				text-align: left;
+
 				
 				
 			}
@@ -91,18 +120,40 @@
 		</style>
 
 		<style>
-			.container {
+			.container-w {
 				display: flex;
 			}
 
-			.box {
+			.box-w {
 				flex: 1;
-				background-color: hwb(0 100% 0%);
+				background-color: #ffffff;
 				padding: 20px;
 				border: 2px solid #ccc;
 				border-radius: 5px;
 				width: 60%;
 				margin-right: 30px;
+			}
+
+			.box:last-child {
+				margin-right: 0;
+			}
+		</style>
+
+		<style>
+			.container-b {
+				display: flex;
+				text-align: left;
+			}
+
+			.box {
+				flex: 1;
+				background-color: hwb(0 0% 100%);
+				padding: 20px;
+				border: 2px solid #ccc;
+				border-radius: 5px;
+				width: 60%;
+				margin-right: 30px;
+				color: #ffffff;
 			}
 
 			.box:last-child {
@@ -129,36 +180,63 @@
 					</h2>
 
 					<p class="book-slide2">
-					Tropical geometry concerns itself with the tropical semiring \[ \mathbb{T} = (\mathbb{R} \cap \{-\infty\} , \oplus, \otimes)  \]
+						Tropical geometry concerns itself with the tropical semiring 
+						\[ \mathbb{T} = (\mathbb{R} \cap \{-\infty\} , \oplus, \otimes)  \]
+						which is equipped with the operations
 					
-					which is equipped with the operations
-
-					\[
-					\begin{aligned}
-					x \oplus y &amp; = \max(x, y) \\
-					x \otimes y &amp; = x + y
-					\end{aligned}
-					\]
-
-					E.g. \[ x \oplus (x \otimes y ) = \max(x, x+y ) \]
-
+						\[
+						\begin{aligned}
+						x \oplus y & = \max(x, y) \\
+						x \otimes y & = x + y
+						\end{aligned}
+						\]
+						<br>
+						Examples: 
+						<br><br>
+						(additive identity)                   $-\infty\ \oplus x = x$
+						<br>						
+						(multiplicative identity)             $0 \otimes x = x$
 					</p>
+					
 					
 				</section>
 				<section>
 					<h2>Tropical Polynomials </h2>
 					<p class="book-slide2">
-						Tropical polynomials are piecewise linear functions with integer slopes and a finite number of linear pieces
+						Tropical polynomials are piecewise linear functions with a finite number of linear pieces
 
-						\[ f(x) = x \oplus (x \otimes y ) = \max(x, x+y ) \]
+						<br> <br>
+						<strong>Example: </strong> A tropical polynomial in 2 variables $x,y$ is an expression of the following form, where $S$ is the set of all $(i,j) \in \mathbb{Z}$ which appear as exponents.
+						\[
+						\bigoplus_{(i,j) \in \mathbb{Z}} \left( \bigoplus_{(i',j') \in S} (c_{i',j'} \odot x^{i'} \odot y^{j'}) \right)
+						\]
+						where $x,y,c \in \mathbb{R}$, $c \neq -\infty$,
+						
+						polynomials and its translation into conventional notation.
+						\[
+						\begin{aligned}
+						&0 \oplus x \oplus y \quad \Rightarrow \quad \max \{ x, y, 0 \} \\
+						&\left(3 \odot y\right) \oplus x \oplus \left(-5 \odot x^3\right) \quad \Rightarrow \quad \max \{ 3+y, x, -5+3x \} \\
+						\end{aligned}
+						\]
+
+						
 					</p>
 				</section>
 				<section>
-					<h2> Tropical Varieties </h2>
+					<h2> Tropical Shapes </h2>
 					<p class="book-slide2">
 						A point is in the tropical shape if the maximum is achieved twice
+
+						For 
+						$&0 \oplus x \oplus y$
+						 , the maximum is achieved when either x = y, x = 0, y = 0.
+						Drawn on a cartesian plane we obtain the tropical shape
+
+
+
 					
-					<img src="tropical curve.png">
+					<img src="tropical_line.png">
 				</p>
 				</section>
 
@@ -174,16 +252,19 @@
 					</p>
 
 
-					<div class="container">
-						<div class="box">
-							<p><strong>Linear programming</strong></p>
+					<div class="container-w">
+						<div class="box-w">
+							<p><strong>Linear programming</strong>
+							<br>
+							Find a vector $\mathbf{x}$ that minimizes $\mathbf{c}^T \mathbf{x}$ subject to the constraints $\mathbf{A}\mathbf{x} \leq \mathbf{b}$ and $\mathbf{x} \geq \mathbf{0}$
+						</p>
 						  <img src="LP_example.png">
 						</div>
-						<div class="box">
+						<div class="box-w">
 							<p><strong>Strongly polynomial</strong></p>
 						  <ul>
 							<li>polynomial time in the bit model</li> 
-							<li>total number of arithmetic operations is bounded by poly(n)</li>
+							<li>total number of arithmetic operations polynomial</li>
 						  </ul>	
 						</div>
 					  </div>
@@ -193,70 +274,88 @@
 					<h2>
 						Interior point methods
 					</h2>
-					<div class="book-slide3">
-					<video src="Interior_point_method.mp4" width="400" height="200" controls autoplay loop></video>
-					<p>
-						A class of linear programs which follow the central path within the feasible region to reach optima.
-						They incorporate constraints using barrier functions, such as the 
-						Log-barrier \[B(x) = -\sum_{i=1}^{m} \log(-g_i(x)) - \sum_{j=1}^{p} \log(h_j(x))\] 
+				
 
-						<br>
+					<div class="container-b">
+						<div class="box">
+							<p><strong>Simplex Method</strong>
+							<br><br><br>
+							<video src="simplex_method - Made with Clipchamp.mp4" width="400" height="200" controls autoplay loop></video>
 
-						Dual-primal methods: 
-						 class of interior point methods that seek 
-						solutions for both the primal and dual problems 
-					</p>
-				    </div>
+							<br><br><br>
+							Finds an optimal solution by traversing the edges between vertices on the feasible region
+							<br><br>
+							Worst-case exponential complexity
+
+							
+						</p>
+						</div>
+						<div class="box">
+							<p><strong>Interior Point Methods</strong></p>
+							<br>
+							<video src="Interior_point_method.mp4" width="400" height="200" controls autoplay loop></video>
+							<br><br>
+							<p class="description">
+								A class of linear programs which follow the central path within the feasible region to find an optimal solution
+							<br><br>
+							<em>Possibly strongly polynomial?</em>
+							
+							</p>
+						</div>
+					  </div>
+				</section>
+				
+				<section>
+				<h2> Log-barrier interior point methods are not strongly polynomial</h2>
+				<img src="papers.jpg">
 				</section>
 				<section>
-					    <section>
-					    <h2> Proving Log-barrier interior point methods are not strongly polynomial</h2>
-					    <img src="proof_paper.png">
-					    </section>
+					<h2> Essence of the proof </h2>
+					<div class="book-slide2">
+					<p> Construct a family of linear programs with 3r + 1 constraints in dimension
+						2r
+					
+					<br> Tropicalize the central path
+					<br> Approximate the tropical central path by tropical segments
 
-						<section>
-							<h3> Approach </h3>
-							<ul class="book-slide2">
-								   <li> Construct a family of linear programs with 2r variables and 3r + 1 constraints </li>
-								   <li> The total curvature of the central path of these linear programs is exponential in r, disproving the Hirsch conjecture proposed by Deza, Terlaky and Zinchenko. </li>
+					<br> A general lower bound on the number of iterations of interior point
+					methods with a log-barrier is given by the smallest number of tropical segments needed to describe the tropical central path
+					<br>
+					Final result: the number of iterations is exponential with order $O(2^r)$
 
+					</p>
 
-							</ul>
-						</section>
-						<section>
-							<p>
-								We consider the linear program over a real closed non-Archimedean ﬁeld of Puiseux series in the parameter t. Our method is to tropicalize the central path in linear programming. The tropical central path is the piecewise-linear limit of the central paths of parameterized families of classical linear programs viewed through logarithmic glasses. This allows us to provide combinatorial lower bounds for the number of iterations and the total curvature, in a general setting. Then, the tropical central path is deﬁned as the image by the valuation of the central path over this ﬁeld
+					
+					<div class="image-container">
+						<img src="algebraic.png" alt="Image 1">
+						<p> The algebraic central path</p>
+					  </div>
+					  
+					  <div class="image-container">
+						<img src="tropical_neighbourhood.png" alt="Image 2">
+						<p>The tropicalized central path</p>
+					  </div>
 
-							</p>
-						</section>
-						<section>
-							<h2> Key Takeaways </h2>
-							<p class="book-slide">
-								Obtained a family of counter-examples showing that standard polynomial-time interior points methods exhibit a non strongly polynomial time behavior
-								We considered non-archimedean instances with a degenerate tropical limit that we characterized by combinatorial means
-		
-								Showed a significantly large family of LP algorithms are NOT strongly polynomial
-								This strategy may be applicable to other interior point methods
-		
-		
-							</p>
-						</section>
+					  <p> This approach is likely to extend to other interior point methods</p>
+
+					</div>
 				</section>
+				
 			
 				<section>
 					<h2> Other applications of tropical geometry </h2>
 					<p class="book-slide2">
-						Phylogenetics <img src="phylogenetics.jpeg">
+						Study the topology of phylogenetic trees using tropical geometry <img src="phylo_tree.png">
 						<br>
 						
-						Proving the Brill-Noether theorem (tropically)
+						
 						<br>
-						Helping the Bank of England during the 2007-2008 Financial Crisis
+						Tropical geometry was used by economist Paul Klemperer to design auctions used by the Bank of England during the financial crisis in 2007
 					</p>
 				</section>
 				<section>
 					<h2> Final thoughts </h2>
-						<ul>
+						<ul class="book-slide2">
 							<li>Introduced tropical geometry</li>
 							<li>Discussed its use in an open linear programming problem</li>
 							<li>Discussed other fascinating applications</li>
